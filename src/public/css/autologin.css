@@ -1,0 +1,50 @@
+.autologin {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: white;
+    border: 1px solid lightgray;
+    z-index: 999;
+    min-width: 2em;
+    min-height: 2em;
+}
+
+.autologin.closed .collapsible {
+    display: none;
+}
+
+.autologin .header {
+    font-size: 18px;
+    margin: 0.5em 1em;
+}
+
+.autologin .users {
+    padding-left: 1.3em;
+    list-style-position: inside;
+    margin: 0.5em 0;
+}
+
+.autologin .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    line-height: 2em;
+    text-decoration: none;
+}
+
+.autologin .icon {
+    background-image: url("/images/avatar_man.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    line-height: 2em;
+}
+

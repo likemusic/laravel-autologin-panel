@@ -1,0 +1,34 @@
+{
+    "name": "likemusic/laravel-autologin-panel",
+    "description": "Provide panel with links to autologin as configured users.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Valerij Ivashchenko",
+            "email": "likemusicdev@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "^5.4|^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Likemusic\\Laravel\\AutologinPanel\\": "src/app/"
+        }
+    },
+    "keywords": [
+        "laravel",
+        "autologin",
+        "login",
+        "user"
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Likemusic\\Laravel\\AutologinPanel\\Providers\\AutologinServiceProvider"
+            ]
+        }
+    }
+}
