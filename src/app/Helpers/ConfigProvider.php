@@ -10,7 +10,7 @@ class ConfigProvider
     const CONFIG_KEY_KEY = 'key';
     const CONFIG_KEY_VALUES = 'values';
     const CONFIG_KEY_NAME_TEMPLATE = 'name_template';
-    const CONFIG_KEY_ID_NAME = 'id_name';
+    const CONFIG_KEY_ID_NAME = 'id_field_name';
 
     const AUTOLOGIN_CONFIG_KEY = 'autologin';
 
