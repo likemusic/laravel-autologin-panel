@@ -39,7 +39,7 @@ class AutologinServiceProvider extends ServiceProvider
 
         $this->publishes([
             $this->pathTo('public/js/autologin.js') => public_path('js/autologin.js'),
-            $this->pathTo('public/css/autologin.css') => public_path('css/autologin.js'),
+            $this->pathTo('public/css/autologin.css') => public_path('css/autologin.css'),
             $this->pathTo('public/images/avatar_man.svg') => public_path('images/avatar_man.svg'),
         ], 'public');
     }
