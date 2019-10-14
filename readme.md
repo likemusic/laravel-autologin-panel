@@ -1,3 +1,5 @@
+# Usage
+
 Add to composer in "require-dev":
 
 ```
@@ -43,3 +45,8 @@ Add to your layout/template css and js files. jQuery also should be loaded:
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="/js/autologin.js"></script>
 ```
+
+# TODO:
+- Add tests;
+- Use interfaces;
+- Show in panel current user (if authorized);
