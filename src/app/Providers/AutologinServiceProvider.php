@@ -12,7 +12,7 @@ class AutologinServiceProvider extends ServiceProvider
      */
     private $pluginBaseDir;
 
-    private function __construct(Application $app)
+    public function __construct(Application $app)
     {
         parent::__construct($app);
         $this->pluginBaseDir = realpath(__DIR__ . '/../../');
