@@ -36,3 +36,10 @@ return [
     ...
 ];
 ```
+
+Add to your layout/template css and js files. jQuery also should be loaded:
+```
+        <link href="/css/autologin.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="/js/autologin.js"></script>
+```
