@@ -3,7 +3,7 @@ function Autologin() {
     var $containerClose = $('.autologin .close');
     var $containerIcon = $('.autologin .icon');
 
-    if ($container.length) {
+    if (!$container.length) {
         return;
     }
 
