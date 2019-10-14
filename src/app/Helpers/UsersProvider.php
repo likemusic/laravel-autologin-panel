@@ -54,16 +54,21 @@ class UsersProvider
 
     public function getOrderedAvailableUsers(): array
     {
-        $userModelClassName = $this->getModelClassName();
-        $userKey = $this->getUserKey();
+        $users = $this->getAvailableUsersKeyIdId();
         $userKeyValues = $this->getUserKeyValues();
 
-        $users = $this->getUsersByModel($userModelClassName, $userKey, $userKeyValues);
-
-        return $this->orderUsersByKeyValues($users, $userKey, $userKeyValues);
+        return $this->orderUsersByKeyValues($users, $userKeyValues);
     }
 
-    public function getAvailableUsers(): Collection
+    public function getAvailableUsersKeyIdId(): Collection
+    {
+        $users = $this->getAvailableUsers();
+        $userKey = $this->getUserKey();
+
+        return $users->keyBy($userKey);
+    }
+
+    private function getAvailableUsers(): Collection
     {
         $userModelClassName = $this->getModelClassName();
         $userKey = $this->getUserKey();
@@ -71,6 +76,7 @@ class UsersProvider
 
         return $this->getUsersByModel($userModelClassName, $userKey, $userKeyValues);
     }
+
 
     private function getUserKey()
     {
@@ -89,10 +95,8 @@ class UsersProvider
         return $model->whereIn($userKey, $userKeyValues)->get();
     }
 
-    private function orderUsersByKeyValues(Collection $users, $userKey, $userKeyValues)
+    private function orderUsersByKeyValues(Collection $users, $userKeyValues)
     {
-        $users = $users->keyBy($userKey);
-
         $ret = [];
 
         foreach ($userKeyValues as $userKeyValue) {

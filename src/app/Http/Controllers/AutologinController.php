@@ -57,7 +57,7 @@ class AutologinController
 
     private function getAvailableUsers(): Collection
     {
-        return $this->usersProvider->getAvailableUsers();
+        return $this->usersProvider->getAvailableUsersKeyIdId();
     }
 
     public function setUsersProvider(UsersProvider $usersProvider): void
