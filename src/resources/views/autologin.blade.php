@@ -5,7 +5,7 @@ use Likemusic\Laravel\AutologinPanel\Helpers\AutologinHelper;
 
 /** @var UsersProvider $usersProvider */
 $usersProvider = app(UsersProvider::class);
-$users = $usersProvider->getUsers();
+$users = $usersProvider->getOrderedAvailableUsers();
 
 /** @var AutoLoginHelper $autoLoginHelper */
 $autoLoginHelper = app(AutoLoginHelper::class);

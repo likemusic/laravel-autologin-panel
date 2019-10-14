@@ -52,7 +52,7 @@ class UsersProvider
         return $this->configProvider->getIdFieldName();
     }
 
-    public function getUsers(): array
+    public function getOrderedAvailableUsers(): array
     {
         $userModelClassName = $this->getModelClassName();
         $userKey = $this->getUserKey();
@@ -61,6 +61,15 @@ class UsersProvider
         $users = $this->getUsersByModel($userModelClassName, $userKey, $userKeyValues);
 
         return $this->orderUsersByKeyValues($users, $userKey, $userKeyValues);
+    }
+
+    public function getAvailableUsers(): Collection
+    {
+        $userModelClassName = $this->getModelClassName();
+        $userKey = $this->getUserKey();
+        $userKeyValues = $this->getUserKeyValues();
+
+        return $this->getUsersByModel($userModelClassName, $userKey, $userKeyValues);
     }
 
     private function getUserKey()
