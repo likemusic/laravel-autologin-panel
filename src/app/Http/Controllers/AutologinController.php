@@ -4,8 +4,9 @@ namespace Likemusic\Laravel\AutologinPanel\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Factory as AuthFactoryInterface;
 use Illuminate\Database\Eloquent\Collection;
-use Likemusic\Laravel\AutologinPanel\Helpers\UsersProvider;
+use Likemusic\Laravel\AutologinPanel\Helpers\ConfigProvider;
 use Likemusic\Laravel\AutologinPanel\Helpers\UserHelper;
+use Likemusic\Laravel\AutologinPanel\Helpers\UsersProvider;
 
 class AutologinController
 {
@@ -21,14 +22,22 @@ class AutologinController
      */
     private $userHelper;
 
+    /**
+     * @var
+     */
+    private $configProvider;
+
     public function __construct(
         AuthFactoryInterface $authFactory,
         UsersProvider $usersProvider,
-        UserHelper $userHelper)
+        UserHelper $userHelper,
+        ConfigProvider $configProvider
+    )
     {
         $this->authFactory = $authFactory;
         $this->usersProvider = $usersProvider;
         $this->userHelper = $userHelper;
+        $this->configProvider = $configProvider;
     }
 
     public function autologin(string $userId)
@@ -36,38 +45,33 @@ class AutologinController
         $user = $this->getUserByUserId($userId);
 
         if (!$this->isAvailableUser($user)) {
-            throw new \InvalidArgumentException('Not available user id: '. $userId);
+            throw new \InvalidArgumentException('Not available user id: ' . $userId);
         }
 
         return $this->authUserAndRedirectBack($user);
     }
 
-    private function isAvailableUser($user)
-    {
-        $availableUsers = $this->getAvailableUsers();
-        $userId = $this->getUserId($user);
-
-        return $availableUsers->contains($userId);
-    }
-
-    private function getUserId($user)
-    {
-        return $this->userHelper->getUserId($user);
-    }
-
-    private function getAvailableUsers(): Collection
-    {
-        return $this->usersProvider->getAvailableUsersKeyIdId();
-    }
-
-    public function setUsersProvider(UsersProvider $usersProvider): void
-    {
-        $this->usersProvider = $usersProvider;
-    }
-
     private function getUserByUserId($userId)
     {
         return $this->usersProvider->getUserByUserId($userId);
+    }
+
+    private function isAvailableUser($user)
+    {
+        $userKeyValue = $this->getUserKeyValue($user);
+        $availableKeyValues = $this->getAvailableKeyValues();
+
+        return in_array($userKeyValue, $availableKeyValues);
+    }
+
+    private function getUserKeyValue($user)
+    {
+        return $this->userHelper->getUserKeyValue($user);
+    }
+
+    private function getAvailableKeyValues()
+    {
+        return $this->configProvider->getUserKeyValues();
     }
 
     private function authUserAndRedirectBack($user)
@@ -85,5 +89,15 @@ class AutologinController
     private function redirectBack()
     {
         return redirect()->back();
+    }
+
+    public function setUsersProvider(UsersProvider $usersProvider): void
+    {
+        $this->usersProvider = $usersProvider;
+    }
+
+    private function getAvailableUsersKeyByKey(): Collection
+    {
+        return $this->usersProvider->getAvailableUsersKeyByKey();
     }
 }

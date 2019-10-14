@@ -15,15 +15,15 @@ class UserHelper
         $this->configProvider = $configProvider;
     }
 
-    public function getUserId($user)
+    public function getUserKeyValue($user)
     {
-        $userIdFieldName = $this->getUserIdFieldName();
+        $userKeyFieldName = $this->getUserKeyFieldName();
 
-        return $user->{$userIdFieldName};
+        return $user->{$userKeyFieldName};
     }
 
-    private function getUserIdFieldName()
+    private function getUserKeyFieldName()
     {
-        return $this->configProvider->getIdFieldName();
+        return $this->configProvider->getUserKey();
     }
 }

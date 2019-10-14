@@ -54,13 +54,13 @@ class UsersProvider
 
     public function getOrderedAvailableUsers(): array
     {
-        $users = $this->getAvailableUsersKeyIdId();
+        $users = $this->getAvailableUsersKeyByKey();
         $userKeyValues = $this->getUserKeyValues();
 
         return $this->orderUsersByKeyValues($users, $userKeyValues);
     }
 
-    public function getAvailableUsersKeyIdId(): Collection
+    public function getAvailableUsersKeyByKey(): Collection
     {
         $users = $this->getAvailableUsers();
         $userKey = $this->getUserKey();
