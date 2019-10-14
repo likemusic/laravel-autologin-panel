@@ -34,7 +34,7 @@ class UsersProvider
         $model = $this->createInstanceByClassName($userModelClassName);
         $idFieldName = $this->getIdFieldName();
 
-        return $model->whereIn($idFieldName, $userId)->get();
+        return $model->where($idFieldName, $userId)->first();
     }
 
     private function getModelClassName()
