@@ -11,6 +11,7 @@ class ConfigProvider
     const CONFIG_KEY_VALUES = 'values';
     const CONFIG_KEY_NAME_TEMPLATE = 'name_template';
     const CONFIG_KEY_ID_NAME = 'id_field_name';
+    const CONFIG_KEY_ROUTE_MIDDLEWARE = 'route_middleware';
 
     const AUTOLOGIN_CONFIG_KEY = 'autologin';
 
@@ -27,6 +28,11 @@ class ConfigProvider
     public function getUserModelClassName()
     {
         return $this->getAutoLoginConfig(self::CONFIG_KEY_MODEL_CLASS_NAME);
+    }
+
+    public function getRouteMiddleware()
+    {
+        return $this->getAutoLoginConfig(self::CONFIG_KEY_ROUTE_MIDDLEWARE);
     }
 
     public function getIdFieldName()
