@@ -1,8 +1,10 @@
+@php
+    use Likemusic\Laravel\AutologinPanel\Helpers\UsersProvider;
+    use Likemusic\Laravel\AutologinPanel\Helpers\AutologinHelper;
+@endphp
+
 @if(Config::get('app.debug'))
     @php
-
-        use Likemusic\Laravel\AutologinPanel\Helpers\UsersProvider;
-        use Likemusic\Laravel\AutologinPanel\Helpers\AutologinHelper;
 
         /** @var UsersProvider $usersProvider */
         $usersProvider = app(UsersProvider::class);
@@ -10,8 +12,8 @@
 
         /** @var AutoLoginHelper $autoLoginHelper */
         $autoLoginHelper = app(AutoLoginHelper::class);
-
     @endphp
+
     <div class="autologin closed">
         <div class="collapsible">
             <h1 class="header">Войти как:</h1>
